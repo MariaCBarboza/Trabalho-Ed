@@ -1,34 +1,28 @@
+
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Criação do gerador de pontos aleatórios
+        GeradorAleatorio gerador = new GeradorAleatorio();
 
-        Ponto p1 = new Ponto(2.0, 3.0);
-        Ponto p2 = new Ponto(3.0, 4.0);
-        Ponto p3 = new Ponto(8.0, 9.0);
-        Ponto p4 = new Ponto(7.0, 8.0);
-        Ponto p5 = new Ponto(10.0, 12.0);
+        // Gerar 10 pontos aleatórios com coordenadas no intervalo [0, 20)
+        List<Ponto> pontosGerados = gerador.gerarPontos(6, 10.0);
 
-
-        ArvBinaria cluster1 = new ArvBinaria(new Cluster(p1));
-        ArvBinaria cluster2 = new ArvBinaria(new Cluster(p2));
-        ArvBinaria cluster3 = new ArvBinaria(new Cluster(p3));
-        ArvBinaria cluster4 = new ArvBinaria(new Cluster(p4));
-        ArvBinaria cluster5 = new ArvBinaria(new Cluster(p5));
-
+        // Criação dos clusters iniciais
         List<ArvBinaria> listaClusters = new ArrayList<>();
-        listaClusters.add(cluster1);
-        listaClusters.add(cluster2);
-        listaClusters.add(cluster3);
-        listaClusters.add(cluster4);
-        listaClusters.add(cluster5);
+        for (Ponto ponto : pontosGerados) {
+            ArvBinaria cluster = new ArvBinaria(new Cluster(ponto));
+            listaClusters.add(cluster);
+        }
 
-
+        // Clusterização
         ArvBinaria arvoreFinal = ArvBinaria.clusterizar(listaClusters);
 
-       
+        // Exibição da árvore de clusterização
         System.out.println("Estrutura da árvore de clusterização:");
-        arvoreFinal.mostra();
+        arvoreFinal.mostra("");
     }
 }
