@@ -24,8 +24,8 @@ public class Cluster {
             somaX += ponto.getX();
             somaY += ponto.getY();
         }
-        double novoX = somaX/ pontos.size();
-        double novoY = somaY/ pontos.size();
+        double novoX = Math.round((somaX/ pontos.size()) * 100.0) /100.0;
+        double novoY = Math.round((somaY/ pontos.size()) * 100.0) /100.0;
         this.centroide = new Ponto(novoX, novoY);
     }
 
