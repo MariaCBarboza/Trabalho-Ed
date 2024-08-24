@@ -55,24 +55,28 @@ public class ArvBinaria {
     }
 
 
-    public void mostra() {
-        System.out.println( "Cluster com centroide em: (" + cluster.getCentroide().getX() + ", " + cluster.getCentroide().getY() + ")");
-        System.out.print( "Pontos: ");
+    public void mostra(String prefixo) {
+        System.out.println(prefixo + "Cluster com centroide em: (" + Math.round(( cluster.getCentroide().getX() * 100.0) /100.0) + ", " + Math.round(( cluster.getCentroide().getY() * 100.0) /100.0) + ")");
+
+        System.out.print(prefixo + "Pontos: ");
         for (Ponto ponto : cluster.getPontos()) {
-            System.out.print("(" + ponto.getX() + ", " + ponto.getY() + ") ");
+            System.out.print("(" + Math.round((ponto.getX() * 100.0)/100.0) + ", " + Math.round((ponto.getY() * 100.0)/100.0) + ") ");
         }
         System.out.println();
 
+
         if (esq != null) {
-            System.out.println( "Filho Esquerdo:");
-            esq.mostra( );
+            System.out.println(prefixo + "Filho Esquerdo:");
+            esq.mostra(prefixo + "    ");
         }
 
         if (dir != null) {
-            System.out.println( "Filho Direito:");
-            dir.mostra();
+            System.out.println(prefixo + "Filho Direito:");
+            dir.mostra(prefixo + "    ");
         }
     }
+
+
 
 
 
